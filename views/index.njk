@@ -1,24 +1,18 @@
 {% extends 'partials/layout.njk' %}
 {% block title %}Home{% endblock %}
 {% block content %}
-    <h1>Hello TA22V</h1>
-    <a href="/answer?page=3&order=asc">page</a>
-    <form action="/answer?page=3&order=desc" method="POST">
-        <div class="mb-3">
-            <input type="text" class="form-control" placeholder="name" name="name">
-        </div>
-        <div class="mb-3">
-            <input type="number" class="form-control" placeholder="Age" name="age">
-        </div>
-        <input type="submit" class="btn btn-primary">
-    </form>
-    <ul>
-        {% for i in range(0,100) %}
-            {% if i%2 %}
-                <li>Item {{i}}</li>
-            {% else %}
-                <li class="bg-dark-subtle">Item {{i}}</li>
-            {% endif %}
+    <div class="row">
+        {% for post in posts %}
+            <div class="col-3 mb-2">
+                <div class="card h-100">
+                        {# <img src="..." class="card-img-top" alt="..."> #}
+                        <div class="card-body">
+                        <h5 class="card-title">{{post.title}}</h5>
+                        <p class="card-text">{{post.snippet()}}</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                </div>
+            </div>
         {% endfor %}
-    </ul>
+    </div>
 {% endblock %}

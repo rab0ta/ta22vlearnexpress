@@ -3,7 +3,7 @@ const app = express();
 const port = 3000;
 const bodyParser = require('body-parser');
 const nunjucks = require('nunjucks');
-const {Sequelize, QueryTypes} = require('sequelize');
+const db = require('./models/index');
 app.use(bodyParser.urlencoded({ extended: true }));
 
 nunjucks.configure('views', {
@@ -13,16 +13,10 @@ nunjucks.configure('views', {
 
 // req => request , res => response
 app.get('/', async (req, res) => {
-    const sequelize = new Sequelize({
-        dialect: 'sqlite',
-        storage: 'db.sqlite'
-    });
-    const posts = await sequelize.query('SELECT * FROM `posts`', {
-        type: QueryTypes.SELECT,
-    });
+    let posts = await db.Post.findAll({limit:20});
     console.log(posts);
     console.log(req.query);
-    res.render('index.njk');
+    res.render('index.njk', {posts});
 });
 app.get('/answer', (req, res) => {
     console.log(req.query);
