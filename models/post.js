@@ -12,16 +12,22 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
     }
+
+    snippet(){
+      return this.body.substring(0,300);
+    }
   }
   Post.init({
     title: {
       type: DataTypes.STRING,
+      allowNull:false,
       validate: {
         notNull: true
       }
     },
     body: {
       type: DataTypes.TEXT,
+      allowNull:false,
       validate: {
         notNull: true
       }
