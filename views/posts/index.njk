@@ -1,7 +1,7 @@
 {% extends 'partials/layout.njk' %}
 {% block title %}Posts{% endblock %}
 {% block content %}
-    <a class="btn btn-primary mt-2">Add Post</a> 
+    <a class="btn btn-primary mt-2" href="/posts/create">Add Post</a> 
     {% include "partials/paginate.njk" %}
     <table class="table table-hover table-striped">
         <thead>
@@ -21,8 +21,8 @@
                     <td>
                        <div class="btn-group" role="group" aria-label="Basic example">
                             <a class="btn btn-info">View</a>
-                            <a class="btn btn-warning">Edit</a>
-                            <a class="btn btn-danger">Delete</a>
+                            <a class="btn btn-warning" href="/posts/edit/{{post.id}}">Edit</a>
+                            <a class="btn btn-danger" href="/posts/delete/{{post.id}}">Delete</a>
                         </div> 
                     </td>
                 </tr>
