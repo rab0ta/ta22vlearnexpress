@@ -1,0 +1,28 @@
+{% extends 'partials/layout.njk' %}
+{% block title %}Posts{% endblock %}
+{% block content %}
+    <table class="table mt-4" action="/posts/view/{{post.id}}" method="GET">
+        <tbody>
+            <tr>
+            <th>ID</th>
+            <td>{{post.id}}</td>
+            </tr>
+            <tr>
+            <th>Title</th>
+            <td>{{post.title}}</td>
+            </tr>
+            <tr>
+            <th>Content</th>
+            <td>{{post.body}}</td>
+            </tr>
+            <tr>
+            <th>Created At</th>
+            <td>{{post.createdAt}}</td>
+            </tr>
+            <tr>
+            <th>Updated At</th>
+            <td>{{post.updatedAt}}</td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}

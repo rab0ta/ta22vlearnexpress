@@ -35,6 +35,11 @@ router.get('/edit/:id', async (req, res) => {
     res.render('posts/edit.njk', {post});
 });
 
+router.get('/view/:id', async (req, res) => {
+    const post = await db.Post.findByPk(req.params.id);
+    res.render('posts/view.njk', {post});
+});
+
 router.post('/edit/:id', async (req, res) => {
     const post = await db.Post.findByPk(req.params.id);
     post.title = req.body.title;
